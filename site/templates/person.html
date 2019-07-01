@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block top %}
+  <h1 class="jumbotron-heading">Olá {{name}}</h1>
+  <p class="lead text-muted">Voce tem {{days}} dias de vida.</p>
+  <p>
+    {% for key, person in people.items() %}
+        <a href="/person/{{key}}" class="btn btn-primary my-2">{{person.name}}</a>
+    {% end %}
+  </p>
+{% end %}
+
+{% block bottom %}
+      <div class="row">
+        {% for key, person in people.items() %}
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <a href="/person/{{key}}" class="btn btn-primary my-2">
+                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{person.image}}" />
+                </a>
+
+                <div class="card-body">
+                  <p class="card-text">{{person.name}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% end %}
+      </div>
+{% end %}
